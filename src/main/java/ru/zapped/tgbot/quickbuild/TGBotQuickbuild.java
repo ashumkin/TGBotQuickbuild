@@ -1,7 +1,9 @@
 package ru.zapped.tgbot.quickbuild;
 
 import org.apache.commons.lang3.StringUtils;
+import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.ApiConstants;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -30,6 +32,17 @@ public class TGBotQuickbuild extends TelegramLongPollingBot
         super();
         fbotName = botName;
         fbotToken = botToken;
+        testNameAndToken();
+    }
+
+    public TGBotQuickbuild(DefaultBotOptions options, String botName, String botToken) throws Exception {
+        super(options);
+        fbotName = botName;
+        fbotToken = botToken;
+        testNameAndToken();
+    }
+
+    private void testNameAndToken() throws Exception {
         if (StringUtils.isEmpty(fbotName) || StringUtils.isEmpty(fbotToken)) {
             throw new Exception("Bot name and/or it's token is not set");
         }
