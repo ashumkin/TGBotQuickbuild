@@ -28,7 +28,7 @@ public class TGBotQuickbuild extends TelegramLongPollingBot
     private void testForCommand(Update update) {
         ITGBotCommand extractedCommand = null;
         if (update.getMessage().isCommand()) {
-            extractedCommand = BotCommandExtractor.parseMessage(update);
+            extractedCommand = BotCommandExtractor.parseMessage(this, update);
         }
         commandExecutive.run(extractedCommand);
     }
