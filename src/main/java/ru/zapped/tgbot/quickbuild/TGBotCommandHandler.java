@@ -5,6 +5,7 @@ import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.lang.reflect.Method;
+import java.util.List;
 
 public class TGBotCommandHandler {
 
@@ -39,6 +40,15 @@ public class TGBotCommandHandler {
     public void helpCommand(ITGBotCommand command) {
         SendMessage message = createReply(command)
                 .setText(String.format("Usage:\n%s", getHelp()));
+        sendMessage(message);
+    }
+
+    @BotCommand(Command = "/list", Description = "Get configuration list: /list PATTERN")
+    public void listCommand(ITGBotCommand command) {
+        QuickbuildClient quickbuildClient = new QuickbuildClient();
+        List<QuickbuildConfig> configList = quickbuildClient.listConfigurations(command.arguments());
+        SendMessage message = createReply(command)
+                .setText(configList.toString());
         sendMessage(message);
     }
 

@@ -38,6 +38,7 @@ public class TGBotCommandExecutive implements ITGBotCommandExecutive {
             commandMethod.invoke(FtgbotCommandHandler, command);
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }

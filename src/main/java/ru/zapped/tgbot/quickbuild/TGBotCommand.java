@@ -14,6 +14,10 @@ public class TGBotCommand implements ITGBotCommand {
         Fupdate = update;
     }
 
+    public String arguments() {
+        return Farguments;
+    }
+
     public String name() {
         return Fname;
     }
@@ -23,5 +27,4 @@ public class TGBotCommand implements ITGBotCommand {
         return Fupdate;
     }
 
-    ;
 }
